@@ -1,0 +1,17 @@
+/*Imagen centrada. Hay que setear la clase directamente*/
+.centered-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%; 
+}
+
+/*Eliminar excesivo maregen inferior tras titulo principal de la página*/
+.md-main__inner .md-content h1:first-of-type {
+  margin-bottom: 0rem; /* Prova amb el valor que prefereixis */
+}
+
+/* Justificar el texto de todos los párrafos en el contenido principal */
+.md-content p {
+  text-align: justify;
+}
