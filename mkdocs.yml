@@ -1,0 +1,98 @@
+#https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/
+
+site_name: Juanra Collado
+site_author: Juanra Collado
+site_description: Espai de documentació tècnica i recursos per a DAW, DAM, ASIX i altres tecnologies.
+#site_url: https://www.juanracollado.com
+
+# Configuración del tema Material
+theme:
+  name: material
+  logo: assets/logos/logo_white.png
+  favicon: assets/logos/favicon.ico
+  features:
+    #- navigation.tabs
+    - navigation.sections
+    - navigation.indexes
+    - navigation.tracking    # Mantiene activa la navegación mientras desplazas
+    - #navigation.expand # Expande automáticamente los menús
+    - navigation.sections # Secciones de navegación
+    - navigation.instant # Carga instantánea de enlaces
+    - navigation.search.highlight
+    - navigation.search.suggest
+    - navigation.search
+    - #toc.integrate # Integración de la tabla de contenidos
+    - navigation.top
+    - content.code.copy
+    - content.code.annotate
+    - content.code.highlight
+    - content.code.expand
+    - content.code.tabs
+    - header.autohide
+
+
+  palette:
+    # Modo claro
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: red
+      accent: deep orange
+      toggle:
+        icon: material/brightness-7
+        name: Cambiar a modo oscuro
+    # Modo oscuro
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: red
+      accent: deep orange
+      toggle:
+        icon: material/brightness-4
+        name: Cambiar a modo claro
+  language: es
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+# Estructura de navegación
+nav:
+  - Benvingut/da: index.md
+  - Introducció al cloud:
+    - U0 - RA's i continguts: 
+      - Resultats d'aprenentatge (RA's): cloud/u0_ra.md
+      - Continguts: cloud/u0_continguts.md
+    - U1 - Introducció al núvol i a AWS: 
+      - Continguts: cloud/u1_continguts.md
+      - Pràctiques: cloud/u1_practiques.md
+    - U2 - Infraestructura gloval, serveis principals i seguretat:
+      # - Continguts: cloud/u2_continguts.md
+      # - Pràctiques: cloud/u2_practiques.md
+      - Continguts: construccio.md  
+     # - Pràctiques: construccio.md
+
+# Extensiones de Markdown
+markdown_extensions:
+  - meta  # Metadatos en archivos md
+  - admonition  # Notas, advertencias, etc.
+  - pymdownx.highlight  # Resaltado de sintaxis
+  - pymdownx.superfences  # Bloques de código mejorados
+  - pymdownx.tabbed  # Contenido en pestañas
+  
+# Plugins
+plugins:
+  - search  # Búsqueda
+
+
+# Personalización adicional
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/JuanraCollado
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/juanra-collado-80206859/
+
+
+extra_css:
+  - assets/css/custom.css
+
+extra_javascript:
+  - https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;700&family=Red+Hat+Mono:wght@400;700&display=swap
