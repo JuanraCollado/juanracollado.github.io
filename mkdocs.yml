@@ -5,7 +5,8 @@ site_author: Juanra Collado
 site_description: Espai de documentació tècnica i recursos per a DAW, DAM, ASIX i altres tecnologies.
 #site_url: https://www.juanracollado.com
 
-# Configuración del tema Material
+# Configuración del tema git remote set-url origin git@github.com:JuanraCollado/web.git
+
 theme:
   name: material
   logo: assets/logos/logo_white.png
