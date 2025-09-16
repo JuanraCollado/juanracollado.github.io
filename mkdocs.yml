@@ -64,10 +64,11 @@ nav:
     - U1 - Introducció al núvol i a AWS: 
       - Continguts: cloud/u1_continguts.md
       - Pràctiques: cloud/u1_practiques.md
-    - U2 - Infraestructura gloval, serveis principals i seguretat:
-      # - Continguts: cloud/u2_continguts.md
-      # - Pràctiques: cloud/u2_practiques.md
-      - Continguts: construccio.md  
+    - U2 - Infraestructura global, serveis principals i seguretat:
+       - Continguts: cloud/u2_continguts.md
+       - Pràctiques: cloud/u2_practiques.md
+    - U3 - Xarxes virtuals i serveis de còmput:
+       - Continguts: construccio.md  
      # - Pràctiques: construccio.md
 
 # Extensiones de Markdown

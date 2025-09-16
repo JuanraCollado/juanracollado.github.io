@@ -15,6 +15,7 @@ Permet **accedir als recursos de manera remota, sota demanda i pagant només pel
 ### 🔁 Diferències amb el model tradicional (*on-premise*)
 
 En un model tradicional, l’empresa ha de:
+
 - Comprar maquinari i llicències de programari
 - Instal·lar i configurar servidors
 - Gestionar manteniment físic i actualitzacions
@@ -202,5 +203,11 @@ _Infraestructura global d’AWS - Font: salesforce_
 > Netflix, NASA, BMW, i moltes start-ups utilitzen AWS per al seu funcionament diari.
 
 ---
+!!! tip "Pràctica sugerida"
+    En aquest punt, es recomana fer les [pràctiques de la unitat 1](u1_practiques.md) per tindre un primer contacte amb la plataforma.
 
-En aquest punt dels continguts, et recomane fer les [pràctiques de la unitat](u1_practiques.md) per tindre un primer contacte amb la plataforma.
+!!! tip "Curs AWS Academy Cloud Foundations "
+    Una vegada dins d'AWS (cal fer les pràctiques abans), es recomana realitzar el mòdul 0 (*Introducción al curso*) i el mòdul 1 (*Información general sobre conceptos de la nube*) del curs de *AWS Academy Cloud Foundations*.
+
+
+
