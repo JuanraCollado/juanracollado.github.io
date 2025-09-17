@@ -91,6 +91,9 @@ extra:
       link: https://github.com/JuanraCollado
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/in/juanra-collado-80206859/
+  analytics:
+    provider: google
+    property: G-P5E4F6M9VJ
 
 
 extra_css:
