@@ -188,7 +188,7 @@ Abans de crear la primera instància cal conèixer alguns termes:
 - **Volums EBS:** discs virtuals que s’associen a la instància per emmagatzemar dades.
 
 !!! tip "Pràctica sugerida"
-    En aquest punt dels continguts, es recomana fer la [pràctica 2 de la unitat 2](u2_practiques.md).
+    En aquest punt dels continguts, es recomana fer la [pràctica 2 i la pràctica 3 de la unitat 2](u2_practiques.md) 
 
 ---
 
