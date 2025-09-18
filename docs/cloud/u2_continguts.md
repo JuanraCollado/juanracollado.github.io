@@ -190,5 +190,88 @@ Abans de crear la primera instància cal conèixer alguns termes:
 !!! tip "Pràctica sugerida"
     En aquest punt dels continguts, es recomana fer la [pràctica 2 i la pràctica 3 de la unitat 2](u2_practiques.md) 
 
+!!! tip "Curs AWS Academy Cloud Foundations "
+    Una vegada fetes les pràctiques 2 i 3 de la U2, es recomana realitzar el mòdul 6 (*Informàtica*) del curs de *AWS Academy Cloud Foundations* fins a la secció 5. La realització del *Laboratorio 3* d'aquest mòdul és obligatòria (ho indica a l'entregable).
+
 ---
+
+## 🔐 Seguretat bàsica en AWS
+
+La seguretat és un dels pilars fonamentals del núvol. AWS segueix un model anomenat responsabilitat compartida:
+
+AWS s’encarrega de la seguretat de la infraestructura (datacenters, maquinari, xarxa física, hipervisor, etc.).
+
+El client és responsable de la seguretat del que crea i configura dins del núvol: usuaris, permisos, configuració de xarxa, encriptació de dades i programari instal·lat.
+
+---
+
+### 🔑 Autenticació i accés a les instàncies
+
+Per accedir a una instància EC2 s’utilitzen parells de claus (key pairs) basats en criptografia asimètrica:
+
+- Clau pública: es guarda a la instància.
+
+- Clau privada: només la té l’usuari i serveix per autenticar-se.
+
+Això substitueix les contrasenyes tradicionals i és molt més segur.
+
+Al crear una instància, ens pregunta quina clau volem gastar. Per defecte, als laboratoris ja tenim una anomenada *vockey* la qual es pot descarregar desde qualsevol moment des del panell de control del laboratori.
+
+!!! danger "Compte!!!!"
+    👉 Si es perd la clau privada, no hi ha manera senzilla d’accedir a la instància. 
+
+
+La forma d'accedir utilitzant aquest certificat és part de l'entregable d'aquesta unitat.
+
+---
+
+### 🌐 Seguretat de xarxa a AWS
+
+Quan una instància EC2 s’executa, està dins d’una VPC (Virtual Private Cloud), que és una xarxa virtual pròpia. Açò passa sempre, encara que nosaltres no ho fem explicitament. La forma de gestionar les VPC's es veu a la següent unitat.
+
+Cada instància pot llimitar el tràfic d'entrada-eixida a través de grups de seguretat i cada xarxa (que pot contindre varies instàncies) ho llimita a través d'ACLs.
+
+#### 1. Security Groups (SG)
+
+Són firewalls virtuals que controlen el tràfic a nivell d’instància.
+
+Treballen amb regles inbound i outbound:
+
+- Inbound: tràfic que entra (exemple: permetre SSH o HTTP).
+
+- Outbound: tràfic que ix (exemple: permetre a la instància navegar per Internet).
+
+Les regles són estatful: si permetes una connexió d’entrada, la resposta automàticament està permesa.
+
+<img src="../../assets/u2/sg.png" alt="sg" width="800"/>
+_Security groups a una instància - Font: Pròpia_
+
+#### 2. Network ACLs (NACLs)
+
+Funcionen a nivell de subxarxa (no d’instància).
+
+Les regles són stateless: cada direcció (entrada i eixida) s’ha de configurar explícitament.
+
+Menys utilitzades en entorns senzills, però útils per capes de seguretat addicionals.
+
+!!! info "ACL's i VPC"
+    Aquestes s'estudien amb detall a la següent unitat, juntament amb les VPC
+
+
+#### 3. Bones pràctiques de seguretat de xarxa  
+
+- Principi de mínim privilegi: obrir només els ports estrictament necessaris.
+
+- Limitar per IP sempre que siga possible.
+
+- Separar entorns: per exemple, entorn de producció i de proves en SG diferents.
+
+- Monitoritzar amb CloudWatch i VPC Flow Logs (vist més endavant al curs).
+
+!!! tip "Pràctica sugerida"
+    En aquest punt dels continguts, es recomana fer la [pràctica 4 de la unitat 2](u2_practiques.md).
+
+!!! tip "Curs AWS Academy Cloud Foundations "
+    Una vegada feta les pràctica 4 s'ha de realitzar el mòdul 4 (*Seguridad en la nube*) del curs d' *AWS Academy Cloud Foundations*.
+
 

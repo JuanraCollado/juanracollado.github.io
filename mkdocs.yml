@@ -70,6 +70,8 @@ nav:
     - U3 - Xarxes virtuals i serveis de còmput:
        - Continguts: construccio.md  
      # - Pràctiques: construccio.md
+    - Enllaços d'interés: cloud/links.md 
+
 
 # Extensiones de Markdown
 markdown_extensions:

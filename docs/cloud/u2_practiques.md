@@ -16,7 +16,7 @@
 <img src="../../assets/u2/regions_lab.png" alt="Regions lab" class="centered-image-50"/>
 
 !!! note "Atenció"
-    AWS Academy sols té disponible la regió US East (N. Virginia) – `us-east-1` i eventualment US West (Oregon) – `us-west-2` o EU (Ireland) – `eu-west-1` per a la majòria de pràctiques.
+    AWS Academy sols té disponible la regió US East (N. Virginia) – `us-east-1` i eventualment US West (Oregon) – `us-west-2` o EU (Ireland) – `eu-west-1` per a la majòria de pràctiques. Les altres estan restringides per al seu ús acadèmic.
 
 ---
 
@@ -83,5 +83,29 @@ Una vegada ha arrancat la instància (tarda una miqueta), podem veure els detall
 ---
 
 ## Pràctica 3 - Connexió a una instància EC2
+
+Una vegada tenim la instància *up and running*, necessitem una forma de connectar-se a ella. Ens centrarem en entorns Linux i més concretament en aquells que no tenen interfície gràfica. 
+
+Per connectar-se per ssh podem fer-ho de dues formes:
+
+- **A través del panell de control**: AWS ens proporciona una interfície amigable des d'on podem connectar-se de forma senzilla a qualsevol de les instàncies que tenim al nostre compte. Per fer-ho, amb la instància seleccionada, anirem al botó *Conectar*
+
+<img src="../../assets/u2/p3_1.png" alt="captura p3_1" class="centered-image-50"/>
+
+Una vegada la connexió ha sigut establerta, veurem la terminal de la instància a la que ens hem connectat.
+
+<img src="../../assets/u2/p3_2.png" alt="captura p3_2" class="centered-image-50"/>
+
+
+- **A través de un client SSH del nostre SO**: Tant desde Windows, com des de Mac com de Linux es possible connectar-se a les instàncies d'AWS. De fet, en entorns en els que no tenim accés a interfície gràfica i/o navegadors és la forma més utilitzada, a més que és molt més ràpida.
+
+!!! warning "Atenció"
+    A l'entregable de la unitat es connectareu a la instància des del vostre SO seguint la documentació oficial.
+
+
+---
+
+## Pràctica 4 - Security groups
+
 
 
