@@ -274,4 +274,7 @@ Menys utilitzades en entorns senzills, però útils per capes de seguretat addic
 !!! tip "Curs AWS Academy Cloud Foundations "
     Una vegada feta les pràctica 4 s'ha de realitzar el mòdul 4 (*Seguridad en la nube*) del curs d' *AWS Academy Cloud Foundations*.
 
+!!! tip "Pràctica sugerida"
+    En aquest punt dels continguts, es recomana fer la [pràctica 5 de la unitat 2](u2_practiques.md).
+
 

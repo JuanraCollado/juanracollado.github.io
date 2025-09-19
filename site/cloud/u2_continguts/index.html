@@ -278,6 +278,8 @@
       
         
       
+        
+      
     
     
     
@@ -765,6 +767,72 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#seguretat-basica-en-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔐 Seguretat bàsica en AWS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔐 Seguretat bàsica en AWS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#autenticacio-i-acces-a-les-instancies" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔑 Autenticació i accés a les instàncies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seguretat-de-xarxa-a-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      🌐 Seguretat de xarxa a AWS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌐 Seguretat de xarxa a AWS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-security-groups-sg" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Security Groups (SG)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-network-acls-nacls" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Network ACLs (NACLs)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-bones-practiques-de-seguretat-de-xarxa" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Bones pràctiques de seguretat de xarxa
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -875,6 +943,29 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Enllaços d'interés
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1052,6 +1143,72 @@
       Conceptes bàsics d’EC2
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seguretat-basica-en-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔐 Seguretat bàsica en AWS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔐 Seguretat bàsica en AWS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#autenticacio-i-acces-a-les-instancies" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔑 Autenticació i accés a les instàncies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seguretat-de-xarxa-a-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      🌐 Seguretat de xarxa a AWS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌐 Seguretat de xarxa a AWS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-security-groups-sg" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Security Groups (SG)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-network-acls-nacls" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Network ACLs (NACLs)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-bones-practiques-de-seguretat-de-xarxa" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Bones pràctiques de seguretat de xarxa
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1333,7 +1490,82 @@ Revisa la documentació sobre la responsabilitat compartida que ofereix <a href=
 <p class="admonition-title">Pràctica sugerida</p>
 <p>En aquest punt dels continguts, es recomana fer la <a href="../u2_practiques/">pràctica 2 i la pràctica 3 de la unitat 2</a> </p>
 </div>
+<div class="admonition tip">
+<p class="admonition-title">Curs AWS Academy Cloud Foundations </p>
+<p>Una vegada fetes les pràctiques 2 i 3 de la U2, es recomana realitzar el mòdul 6 (<em>Informàtica</em>) del curs de <em>AWS Academy Cloud Foundations</em> fins a la secció 5. La realització del <em>Laboratorio 3</em> d'aquest mòdul és obligatòria (ho indica a l'entregable).</p>
+</div>
 <hr />
+<h2 id="seguretat-basica-en-aws">🔐 Seguretat bàsica en AWS</h2>
+<p>La seguretat és un dels pilars fonamentals del núvol. AWS segueix un model anomenat responsabilitat compartida:</p>
+<p>AWS s’encarrega de la seguretat de la infraestructura (datacenters, maquinari, xarxa física, hipervisor, etc.).</p>
+<p>El client és responsable de la seguretat del que crea i configura dins del núvol: usuaris, permisos, configuració de xarxa, encriptació de dades i programari instal·lat.</p>
+<hr />
+<h3 id="autenticacio-i-acces-a-les-instancies">🔑 Autenticació i accés a les instàncies</h3>
+<p>Per accedir a una instància EC2 s’utilitzen parells de claus (key pairs) basats en criptografia asimètrica:</p>
+<ul>
+<li>
+<p>Clau pública: es guarda a la instància.</p>
+</li>
+<li>
+<p>Clau privada: només la té l’usuari i serveix per autenticar-se.</p>
+</li>
+</ul>
+<p>Això substitueix les contrasenyes tradicionals i és molt més segur.</p>
+<p>Al crear una instància, ens pregunta quina clau volem gastar. Per defecte, als laboratoris ja tenim una anomenada <em>vockey</em> la qual es pot descarregar desde qualsevol moment des del panell de control del laboratori.</p>
+<div class="admonition danger">
+<p class="admonition-title">Compte!!!!</p>
+<p>👉 Si es perd la clau privada, no hi ha manera senzilla d’accedir a la instància. </p>
+</div>
+<p>La forma d'accedir utilitzant aquest certificat és part de l'entregable d'aquesta unitat.</p>
+<hr />
+<h3 id="seguretat-de-xarxa-a-aws">🌐 Seguretat de xarxa a AWS</h3>
+<p>Quan una instància EC2 s’executa, està dins d’una VPC (Virtual Private Cloud), que és una xarxa virtual pròpia. Açò passa sempre, encara que nosaltres no ho fem explicitament. La forma de gestionar les VPC's es veu a la següent unitat.</p>
+<p>Cada instància pot llimitar el tràfic d'entrada-eixida a través de grups de seguretat i cada xarxa (que pot contindre varies instàncies) ho llimita a través d'ACLs.</p>
+<h4 id="1-security-groups-sg">1. Security Groups (SG)</h4>
+<p>Són firewalls virtuals que controlen el tràfic a nivell d’instància.</p>
+<p>Treballen amb regles inbound i outbound:</p>
+<ul>
+<li>
+<p>Inbound: tràfic que entra (exemple: permetre SSH o HTTP).</p>
+</li>
+<li>
+<p>Outbound: tràfic que ix (exemple: permetre a la instància navegar per Internet).</p>
+</li>
+</ul>
+<p>Les regles són estatful: si permetes una connexió d’entrada, la resposta automàticament està permesa.</p>
+<p><img src="../../assets/u2/sg.png" alt="sg" width="800"/>
+<em>Security groups a una instància - Font: Pròpia</em></p>
+<h4 id="2-network-acls-nacls">2. Network ACLs (NACLs)</h4>
+<p>Funcionen a nivell de subxarxa (no d’instància).</p>
+<p>Les regles són stateless: cada direcció (entrada i eixida) s’ha de configurar explícitament.</p>
+<p>Menys utilitzades en entorns senzills, però útils per capes de seguretat addicionals.</p>
+<div class="admonition info">
+<p class="admonition-title">ACL's i VPC</p>
+<p>Aquestes s'estudien amb detall a la següent unitat, juntament amb les VPC</p>
+</div>
+<h4 id="3-bones-practiques-de-seguretat-de-xarxa">3. Bones pràctiques de seguretat de xarxa</h4>
+<ul>
+<li>
+<p>Principi de mínim privilegi: obrir només els ports estrictament necessaris.</p>
+</li>
+<li>
+<p>Limitar per IP sempre que siga possible.</p>
+</li>
+<li>
+<p>Separar entorns: per exemple, entorn de producció i de proves en SG diferents.</p>
+</li>
+<li>
+<p>Monitoritzar amb CloudWatch i VPC Flow Logs (vist més endavant al curs).</p>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Pràctica sugerida</p>
+<p>En aquest punt dels continguts, es recomana fer la <a href="../u2_practiques/">pràctica 4 de la unitat 2</a>.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Curs AWS Academy Cloud Foundations </p>
+<p>Una vegada feta les pràctica 4 s'ha de realitzar el mòdul 4 (<em>Seguridad en la nube</em>) del curs d' <em>AWS Academy Cloud Foundations</em>.</p>
+</div>
 
 
 

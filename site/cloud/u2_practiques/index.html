@@ -278,6 +278,8 @@
       
         
       
+        
+      
     
     
     
@@ -664,6 +666,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#practica-4-security-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pràctica 4 - Security groups
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -756,6 +767,29 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Enllaços d'interés
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -814,6 +848,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#practica-4-security-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pràctica 4 - Security groups
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -852,7 +895,7 @@
 <p><img src="../../assets/u2/regions_lab.png" alt="Regions lab" class="centered-image-50"/></p>
 <div class="admonition note">
 <p class="admonition-title">Atenció</p>
-<p>AWS Academy sols té disponible la regió US East (N. Virginia) – <code>us-east-1</code> i eventualment US West (Oregon) – <code>us-west-2</code> o EU (Ireland) – <code>eu-west-1</code> per a la majòria de pràctiques.</p>
+<p>AWS Academy sols té disponible la regió US East (N. Virginia) – <code>us-east-1</code> i eventualment US West (Oregon) – <code>us-west-2</code> o EU (Ireland) – <code>eu-west-1</code> per a la majòria de pràctiques. Les altres estan restringides per al seu ús acadèmic.</p>
 </div>
 <hr />
 <h2 id="practica-2-creacio-de-la-primera-instancia-ec2">Pràctica 2 - Creació de la primera instància EC2</h2>
@@ -892,6 +935,23 @@ De moment no crearem cap clau ja que gastarem la que ve per defect (vockey). En 
 </div>
 <hr />
 <h2 id="practica-3-connexio-a-una-instancia-ec2">Pràctica 3 - Connexió a una instància EC2</h2>
+<p>Una vegada tenim la instància <em>up and running</em>, necessitem una forma de connectar-se a ella. Ens centrarem en entorns Linux i més concretament en aquells que no tenen interfície gràfica. </p>
+<p>Per connectar-se per ssh podem fer-ho de dues formes:</p>
+<ul>
+<li><strong>A través del panell de control</strong>: AWS ens proporciona una interfície amigable des d'on podem connectar-se de forma senzilla a qualsevol de les instàncies que tenim al nostre compte. Per fer-ho, amb la instància seleccionada, anirem al botó <em>Conectar</em></li>
+</ul>
+<p><img src="../../assets/u2/p3_1.png" alt="captura p3_1" class="centered-image-50"/></p>
+<p>Una vegada la connexió ha sigut establerta, veurem la terminal de la instància a la que ens hem connectat.</p>
+<p><img src="../../assets/u2/p3_2.png" alt="captura p3_2" class="centered-image-50"/></p>
+<ul>
+<li><strong>A través de un client SSH del nostre SO</strong>: Tant desde Windows, com des de Mac com de Linux es possible connectar-se a les instàncies d'AWS. De fet, en entorns en els que no tenim accés a interfície gràfica i/o navegadors és la forma més utilitzada, a més que és molt més ràpida.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Atenció</p>
+<p>A l'entregable de la unitat es connectareu a la instància des del vostre SO seguint la documentació oficial.</p>
+</div>
+<hr />
+<h2 id="practica-4-security-groups">Pràctica 4 - Security groups</h2>
 
 
 

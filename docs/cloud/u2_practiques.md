@@ -102,10 +102,81 @@ Una vegada la connexió ha sigut establerta, veurem la terminal de la instància
 !!! warning "Atenció"
     A l'entregable de la unitat es connectareu a la instància des del vostre SO seguint la documentació oficial.
 
+!!! tip "Pràctica sugerida"
+    En aquest punt dels continguts, es recomana fer l'exercici 1 del PAC2 que trobareu a Aules.
 
 ---
 
 ## Pràctica 4 - Security groups
+En aquesta pràctica agafarem com a punt de partida la instància de la pràctica 3 i exercici 1 de la PAC1. Partim d'una instància arrancada que si accedim als grups de seguretat vorem que té dos grups de seguretat assignats:
+
+<img src="../../assets/u2/p4_1.png" alt="captura p4_1" class="centered-image-50"/>
+
+- El grup de seguretat anomenat default ve per defecte amb cada VPC. Si despleguem els detalls d’este grup de seguretat veurem que no utilitza adreces IP, sinó que com a origen té el mateix grup de seguretat.
+
+<img src="../../assets/u2/p4_2.png" alt="captura p4_2" class="centered-image-50"/>
+
+Això significa que qualsevol instància que tinga associat el mateix grup de seguretat es pot comunicar amb les altres en tots els ports sense cap restricció. Dit d’una altra manera, és una regla de comunicació interna entre instàncies que compartixen eixe grup o VPC. En condicions normals, este grup de seguretat no el modificarem mai.
+
+- El grup de seguretat anomenat *launch-wizard-1* l’hem creat nosaltres en crear la instància, quan en les opcions de seguretat li hem indicat que volem que tots puguen connectar-se per SSH a la nostra instància. És a dir, este grup de seguretat permet que qualsevol IP de tot el món es puga connectar per SSH a esta instància a través de la IP pública de la instància, la qual es pot consultar en els detalls de la instància.
+
+<img src="../../assets/u2/p4_3.png" alt="captura p4_3" class="centered-image-50"/>
+
+!!! info "0.0.0.0/0"
+    Quan la IP es, com en aquest cas, 0.0.0.0/0 fa referència totes les IP. 
+
+### Crear un nou grup de seguretat
+
+Crear un nou grup de seguretat i assignar-lo a una instància és relativament senzill. Després de prémer el botó *Crear grupo de seguridad*, emplenarem el nom que volem donar-li al grup de seguretat, una descripció (opcional) i seleccionarem la VPC en la que volem incloure aquesta regla de seguretat.
+
+<img src="../../assets/u2/p4_4.png" alt="captura p4_4" class="centered-image-50"/>
+
+En el nostre cas anem a crear una regla que permeta accedir per http al servidor (per exemple, ser servir una web). 
+
+En aquest punt, seleccionare afegir regla d'entrada i tinc dos opcions, escriure directament el port que vull obrir o seleccionar el servei del desplegable *tipo*
+
+<img src="../../assets/u2/p4_5.png" alt="captura p4_5" class="centered-image-50"/>
+
+I en *origen* serà on decidirem les IP's a les que volem autoritzar a connectar-se a este port. Si volem que qualsevol puga connectar-se gastarem la 0.0.0.0/0 i si volem que sols siguen certes ip's, el que farem serà incloure les IP's dels PC's que volem que es puguen connectar. En el nostre cas, anem a indicar-li dues ip's específiques a les quals volem permetre la connexió. També hi ha altres opcions com indicar els tipus de IP's o prefixes d'AWS.
+
+!!! info "IP pública"
+    Recorda que sempre parlem de les IP's públiques, mai de les IP's privades dels equips. Per coneixer-la teniu moltes webs que vos la diuen però des de terminal, una forma ràpida és executar *curl https://checkip.amazonaws.com*
+
+    <img src="../../assets/u2/p4_6.png" alt="captura p4_6" class="centered-image-50"/>
+
+Per tant, si sols volem permetre la connexió des d'aquesta IP, en *origen* posarem la direcció seguit de **/32** que indica que volem que els 32 bits de la IP siguen exactes. Si posem /24, qualsevol IP que tinga els primers 24 bits iguals estarà permesa. Podem afegir tantes IP's com vulguem.
+
+<img src="../../assets/u2/p4_7.png" alt="captura p4_7" class="centered-image-50"/>
+
+Sols ens quedaria guardar els canvis prement el botó *Crear grupo de seguridad*. 
+
+!!! info "Assignar grup de seguretat"
+    Quan creem un grup de seguretat nou, aquest no s'assigna per defecte a cal instància. Cal fer-ho explicitament.
+
+Ara aquest grup de segureta el podem utilitzar tant per assignar-lo a la instància que ja tenim creada com a instàncies noves que creem ja que ens apareixerà en el desplegable de grups de seguretat disponibles.
+
+Per assignar aquest grup de seguretat a la instància ja creada cal anar a la vista de la instància i des de *acciones* seleccionarem l'opció de *Cambiar grupo de seguridad*.
+
+<img src="../../assets/u2/p4_8.png" alt="captura p4_8" class="centered-image-50"/>
+
+Des d'aquesta vista podrem gestionar els grups de seguretat. Si volem afegir el nostre, el seleccionem i li donem a *Agregar grupo de seguridad*.
+
+<img src="../../assets/u2/p4_9.png" alt="captura p4_9" class="centered-image-50"/>
+
+Després de guardar els canvis i uns segons per aplicar-los (AWS **sempre** tarda una miqueta en fer aquests tipus de canvis), veurem si accedim a la pestanya de segureta que el nostre grup està aplicat correctament a la instància, permetent ara mateix connexions SSH des de tots els llocs i per HTTP solament des de la IP del desarrollador.
+
+<img src="../../assets/u2/p4_10.png" alt="captura p4_10" class="centered-image-50"/>
+
+## Pràctica 5 - Creació 
+
+Aquesta pràctica la trobareu en Aules en format vídeo.
 
 
+
+
+
+
+
+
+---
 
