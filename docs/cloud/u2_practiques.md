@@ -167,16 +167,61 @@ Després de guardar els canvis i uns segons per aplicar-los (AWS **sempre** tard
 
 <img src="../../assets/u2/p4_10.png" alt="captura p4_10" class="centered-image-50"/>
 
-## Pràctica 5 - Creació 
+## Pràctica 5 - Creació d'un servidor web amb Apache
 
-Aquesta pràctica la trobareu en Aules en format vídeo.
+Aquesta pràctica la trobareu en Aules en format vídeo. En ella:
 
+- Crearem una instància Ubuntu
 
+- Ens connectarem per SSH.
 
+- Instal·larem el servidor web Apache
 
+- Modificarem el grup de seguretat per permetre connexions al servidor web.
 
+- Veurem la nostra web estàtica desplegada i funcionant correctament al núvol.
 
+---
 
+## Pràctica 6 - Connexió per FTP utilitzant el Filezilla
+
+Ara que ja tenim un servidor web instal·lat a la nostra instància, és important saber com poder enviar-li fitxers per a poder transferir, entre altres coses, el nostre lloc web.
+
+Per fer-ho, necessitarem tindre instal·lat al nostre ordinador el programa [*Filezilla*](https://filezilla-project.org/download.php). 
+
+D'altra banda, també cal descarregar el fitxer .ppk del nostre laboratori.
+
+!!! info "Problema al descarregar"
+    Recorda que si tens problemes per a descarregar aquests fitxers, disposes de l'accés al laboratori per la [web alternativa](https://labs.vocareum.com/home/login.php) 
+    <img src="../../assets/u2/p6_2.png" alt="captura p6_2" class="centered-image-50"/>
+
+Una vegada tenim el *Filezilla* i el fitxer *.ppk*, seguim els següents pasos:
+
+- Obrim el *Filezilla* i anem a *Archivo->Gestor de sitios*
+
+- Crear nuevo sitio
+
+- Protocol: SFTP
+
+- Host: IP Pública de la instància
+
+- Port: 22
+
+- Mode d'accés: Arxiu de claus
+
+- Usuari: ubuntu (o ec2-user)
+
+- Arxiu de claus: seleccioneu el vostre fitxer .ppk
+
+- Conectar
+
+<img src="../../assets/u2/p6_3.png" alt="captura p6_3" class="centered-image-50"/>
+
+Una vegada acceptem les claus, ja estarem dins de la instància i podem veure a l'esquerre els documents i carpetes del nostre ordinador i a la dreta els fitxers i carpetes del servidor.
+
+Per enviar un fitxer des del nostre ordinador fins al servidor, tan sols hem de arrastrar-lo fins la carpeta que dessitgem.
+
+<img src="../../assets/u2/p6_4.png" alt="captura p6_4" class="centered-image-50"/>
 
 ---
 

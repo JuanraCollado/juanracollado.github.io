@@ -280,6 +280,8 @@
       
         
       
+        
+      
     
     
     
@@ -673,6 +675,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Pràctica 4 - Security groups">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#crear-un-nou-grup-de-seguretat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Crear un nou grup de seguretat
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practica-5-creacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pràctica 5 - Creació
+    </span>
+  </a>
+  
 </li>
       
     </ul>
@@ -774,6 +800,29 @@
   
   
     <li class="md-nav__item">
+      <a href="../instruccions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Intruccions d'interés
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../links/" class="md-nav__link">
         
   
@@ -852,6 +901,30 @@
   <a href="#practica-4-security-groups" class="md-nav__link">
     <span class="md-ellipsis">
       Pràctica 4 - Security groups
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pràctica 4 - Security groups">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#crear-un-nou-grup-de-seguretat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Crear un nou grup de seguretat
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practica-5-creacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pràctica 5 - Creació
     </span>
   </a>
   
@@ -950,8 +1023,56 @@ De moment no crearem cap clau ja que gastarem la que ve per defect (vockey). En 
 <p class="admonition-title">Atenció</p>
 <p>A l'entregable de la unitat es connectareu a la instància des del vostre SO seguint la documentació oficial.</p>
 </div>
+<div class="admonition tip">
+<p class="admonition-title">Pràctica sugerida</p>
+<p>En aquest punt dels continguts, es recomana fer l'exercici 1 del PAC2 que trobareu a Aules.</p>
+</div>
 <hr />
 <h2 id="practica-4-security-groups">Pràctica 4 - Security groups</h2>
+<p>En aquesta pràctica agafarem com a punt de partida la instància de la pràctica 3 i exercici 1 de la PAC1. Partim d'una instància arrancada que si accedim als grups de seguretat vorem que té dos grups de seguretat assignats:</p>
+<p><img src="../../assets/u2/p4_1.png" alt="captura p4_1" class="centered-image-50"/></p>
+<ul>
+<li>El grup de seguretat anomenat default ve per defecte amb cada VPC. Si despleguem els detalls d’este grup de seguretat veurem que no utilitza adreces IP, sinó que com a origen té el mateix grup de seguretat.</li>
+</ul>
+<p><img src="../../assets/u2/p4_2.png" alt="captura p4_2" class="centered-image-50"/></p>
+<p>Això significa que qualsevol instància que tinga associat el mateix grup de seguretat es pot comunicar amb les altres en tots els ports sense cap restricció. Dit d’una altra manera, és una regla de comunicació interna entre instàncies que compartixen eixe grup o VPC. En condicions normals, este grup de seguretat no el modificarem mai.</p>
+<ul>
+<li>El grup de seguretat anomenat <em>launch-wizard-1</em> l’hem creat nosaltres en crear la instància, quan en les opcions de seguretat li hem indicat que volem que tots puguen connectar-se per SSH a la nostra instància. És a dir, este grup de seguretat permet que qualsevol IP de tot el món es puga connectar per SSH a esta instància a través de la IP pública de la instància, la qual es pot consultar en els detalls de la instància.</li>
+</ul>
+<p><img src="../../assets/u2/p4_3.png" alt="captura p4_3" class="centered-image-50"/></p>
+<div class="admonition info">
+<p class="admonition-title">0.0.0.0/0</p>
+<p>Quan la IP es, com en aquest cas, 0.0.0.0/0 fa referència totes les IP. </p>
+</div>
+<h3 id="crear-un-nou-grup-de-seguretat">Crear un nou grup de seguretat</h3>
+<p>Crear un nou grup de seguretat i assignar-lo a una instància és relativament senzill. Després de prémer el botó <em>Crear grupo de seguridad</em>, emplenarem el nom que volem donar-li al grup de seguretat, una descripció (opcional) i seleccionarem la VPC en la que volem incloure aquesta regla de seguretat.</p>
+<p><img src="../../assets/u2/p4_4.png" alt="captura p4_4" class="centered-image-50"/></p>
+<p>En el nostre cas anem a crear una regla que permeta accedir per http al servidor (per exemple, ser servir una web). </p>
+<p>En aquest punt, seleccionare afegir regla d'entrada i tinc dos opcions, escriure directament el port que vull obrir o seleccionar el servei del desplegable <em>tipo</em></p>
+<p><img src="../../assets/u2/p4_5.png" alt="captura p4_5" class="centered-image-50"/></p>
+<p>I en <em>origen</em> serà on decidirem les IP's a les que volem autoritzar a connectar-se a este port. Si volem que qualsevol puga connectar-se gastarem la 0.0.0.0/0 i si volem que sols siguen certes ip's, el que farem serà incloure les IP's dels PC's que volem que es puguen connectar. En el nostre cas, anem a indicar-li dues ip's específiques a les quals volem permetre la connexió. També hi ha altres opcions com indicar els tipus de IP's o prefixes d'AWS.</p>
+<div class="admonition info">
+<p class="admonition-title">IP pública</p>
+<p>Recorda que sempre parlem de les IP's públiques, mai de les IP's privades dels equips. Per coneixer-la teniu moltes webs que vos la diuen però des de terminal, una forma ràpida és executar <em>curl https://checkip.amazonaws.com</em></p>
+<p><img src="../../assets/u2/p4_6.png" alt="captura p4_6" class="centered-image-50"/></p>
+</div>
+<p>Per tant, si sols volem permetre la connexió des d'aquesta IP, en <em>origen</em> posarem la direcció seguit de <strong>/32</strong> que indica que volem que els 32 bits de la IP siguen exactes. Si posem /24, qualsevol IP que tinga els primers 24 bits iguals estarà permesa. Podem afegir tantes IP's com vulguem.</p>
+<p><img src="../../assets/u2/p4_7.png" alt="captura p4_7" class="centered-image-50"/></p>
+<p>Sols ens quedaria guardar els canvis prement el botó <em>Crear grupo de seguridad</em>. </p>
+<div class="admonition info">
+<p class="admonition-title">Assignar grup de seguretat</p>
+<p>Quan creem un grup de seguretat nou, aquest no s'assigna per defecte a cal instància. Cal fer-ho explicitament.</p>
+</div>
+<p>Ara aquest grup de segureta el podem utilitzar tant per assignar-lo a la instància que ja tenim creada com a instàncies noves que creem ja que ens apareixerà en el desplegable de grups de seguretat disponibles.</p>
+<p>Per assignar aquest grup de seguretat a la instància ja creada cal anar a la vista de la instància i des de <em>acciones</em> seleccionarem l'opció de <em>Cambiar grupo de seguridad</em>.</p>
+<p><img src="../../assets/u2/p4_8.png" alt="captura p4_8" class="centered-image-50"/></p>
+<p>Des d'aquesta vista podrem gestionar els grups de seguretat. Si volem afegir el nostre, el seleccionem i li donem a <em>Agregar grupo de seguridad</em>.</p>
+<p><img src="../../assets/u2/p4_9.png" alt="captura p4_9" class="centered-image-50"/></p>
+<p>Després de guardar els canvis i uns segons per aplicar-los (AWS <strong>sempre</strong> tarda una miqueta en fer aquests tipus de canvis), veurem si accedim a la pestanya de segureta que el nostre grup està aplicat correctament a la instància, permetent ara mateix connexions SSH des de tots els llocs i per HTTP solament des de la IP del desarrollador.</p>
+<p><img src="../../assets/u2/p4_10.png" alt="captura p4_10" class="centered-image-50"/></p>
+<h2 id="practica-5-creacio">Pràctica 5 - Creació</h2>
+<p>Aquesta pràctica la trobareu en Aules en format vídeo.</p>
+<hr />
 
 
 
