@@ -693,9 +693,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#practica-5-creacio" class="md-nav__link">
+  <a href="#practica-5-creacio-dun-servidor-web-amb-apache" class="md-nav__link">
     <span class="md-ellipsis">
-      Pràctica 5 - Creació
+      Pràctica 5 - Creació d'un servidor web amb Apache
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practica-6-connexio-per-ftp-utilitzant-el-filezilla" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pràctica 6 - Connexió per FTP utilitzant el Filezilla
     </span>
   </a>
   
@@ -922,9 +931,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#practica-5-creacio" class="md-nav__link">
+  <a href="#practica-5-creacio-dun-servidor-web-amb-apache" class="md-nav__link">
     <span class="md-ellipsis">
-      Pràctica 5 - Creació
+      Pràctica 5 - Creació d'un servidor web amb Apache
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practica-6-connexio-per-ftp-utilitzant-el-filezilla" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pràctica 6 - Connexió per FTP utilitzant el Filezilla
     </span>
   </a>
   
@@ -1070,8 +1088,69 @@ De moment no crearem cap clau ja que gastarem la que ve per defect (vockey). En 
 <p><img src="../../assets/u2/p4_9.png" alt="captura p4_9" class="centered-image-50"/></p>
 <p>Després de guardar els canvis i uns segons per aplicar-los (AWS <strong>sempre</strong> tarda una miqueta en fer aquests tipus de canvis), veurem si accedim a la pestanya de segureta que el nostre grup està aplicat correctament a la instància, permetent ara mateix connexions SSH des de tots els llocs i per HTTP solament des de la IP del desarrollador.</p>
 <p><img src="../../assets/u2/p4_10.png" alt="captura p4_10" class="centered-image-50"/></p>
-<h2 id="practica-5-creacio">Pràctica 5 - Creació</h2>
-<p>Aquesta pràctica la trobareu en Aules en format vídeo.</p>
+<h2 id="practica-5-creacio-dun-servidor-web-amb-apache">Pràctica 5 - Creació d'un servidor web amb Apache</h2>
+<p>Aquesta pràctica la trobareu en Aules en format vídeo. En ella:</p>
+<ul>
+<li>
+<p>Crearem una instància Ubuntu</p>
+</li>
+<li>
+<p>Ens connectarem per SSH.</p>
+</li>
+<li>
+<p>Instal·larem el servidor web Apache</p>
+</li>
+<li>
+<p>Modificarem el grup de seguretat per permetre connexions al servidor web.</p>
+</li>
+<li>
+<p>Veurem la nostra web estàtica desplegada i funcionant correctament al núvol.</p>
+</li>
+</ul>
+<hr />
+<h2 id="practica-6-connexio-per-ftp-utilitzant-el-filezilla">Pràctica 6 - Connexió per FTP utilitzant el Filezilla</h2>
+<p>Ara que ja tenim un servidor web instal·lat a la nostra instància, és important saber com poder enviar-li fitxers per a poder transferir, entre altres coses, el nostre lloc web.</p>
+<p>Per fer-ho, necessitarem tindre instal·lat al nostre ordinador el programa <a href="https://filezilla-project.org/download.php"><em>Filezilla</em></a>. </p>
+<p>D'altra banda, també cal descarregar el fitxer .ppk del nostre laboratori.</p>
+<div class="admonition info">
+<p class="admonition-title">Problema al descarregar</p>
+<p>Recorda que si tens problemes per a descarregar aquests fitxers, disposes de l'accés al laboratori per la <a href="https://labs.vocareum.com/home/login.php">web alternativa</a> 
+<img src="../../assets/u2/p6_2.png" alt="captura p6_2" class="centered-image-50"/></p>
+</div>
+<p>Una vegada tenim el <em>Filezilla</em> i el fitxer <em>.ppk</em>, seguim els següents pasos:</p>
+<ul>
+<li>
+<p>Obrim el <em>Filezilla</em> i anem a <em>Archivo-&gt;Gestor de sitios</em></p>
+</li>
+<li>
+<p>Crear nuevo sitio</p>
+</li>
+<li>
+<p>Protocol: SFTP</p>
+</li>
+<li>
+<p>Host: IP Pública de la instància</p>
+</li>
+<li>
+<p>Port: 22</p>
+</li>
+<li>
+<p>Mode d'accés: Arxiu de claus</p>
+</li>
+<li>
+<p>Usuari: ubuntu (o ec2-user)</p>
+</li>
+<li>
+<p>Arxiu de claus: seleccioneu el vostre fitxer .ppk</p>
+</li>
+<li>
+<p>Conectar</p>
+</li>
+</ul>
+<p><img src="../../assets/u2/p6_3.png" alt="captura p6_3" class="centered-image-50"/></p>
+<p>Una vegada acceptem les claus, ja estarem dins de la instància i podem veure a l'esquerre els documents i carpetes del nostre ordinador i a la dreta els fitxers i carpetes del servidor.</p>
+<p>Per enviar un fitxer des del nostre ordinador fins al servidor, tan sols hem de arrastrar-lo fins la carpeta que dessitgem.</p>
+<p><img src="../../assets/u2/p6_4.png" alt="captura p6_4" class="centered-image-50"/></p>
 <hr />
 
 

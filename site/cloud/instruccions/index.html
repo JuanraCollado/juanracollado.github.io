@@ -878,7 +878,7 @@ unzip breakout.zip
 sudo apt install -y apache2
 sudo systemctl start apache2
 sudo systemctl enable apache2
-echo &quot;&lt;h1&gt;Benvingut a la meua web d&#39;Apache en Ubuntu en una EC2&lt;/h1&gt;&quot;&gt; /var/www/html/index.html
+echo &quot;&lt;h1&gt;Benvingut a la meua web d&#39;Apache en Ubuntu en una EC2&lt;/h1&gt;&quot; | sudo tee /var/www/html/index.html
 </code></pre></div>
 
 
