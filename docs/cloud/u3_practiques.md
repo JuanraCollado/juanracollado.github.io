@@ -3,7 +3,7 @@
     
     Per començar a fer aquestes pràctiques, es imprescindible haver  completat les de la unitat 2.
 ---
-## Pràctica 1 - Disseny mínim amb VPC + Subnet + IGW
+## Juanra - Pràctica 1 - Disseny mínim amb VPC + Subnet + IGW
 
 🎯 Objectiu: En aquesta pràctica inicial, farem un disseny mínim:
 
