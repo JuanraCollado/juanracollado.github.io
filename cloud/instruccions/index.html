@@ -12,6 +12,8 @@
         <meta name="author" content="Juanra Collado">
       
       
+        <link rel="canonical" href="https://juanracollado.github.io/cloud/instruccions/">
+      
       
         <link rel="prev" href="../u3_practiques/">
       
@@ -788,6 +790,42 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#installacio-de-php-sobre-apache-en-ubuntu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instal·lació de PHP sobre Apache en Ubuntu
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installacio-i-configuracio-de-mysql-sobre-ubuntu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instal·lació i configuració de MySQL sobre Ubuntu
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracio-per-a-connectar-se-a-bbdd-mysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuració per a connectar-se a BBDD MySQL
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conectar-per-php-a-una-bbdd-mysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conectar per PHP a una BBDD MySQL
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -946,6 +984,42 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#installacio-de-php-sobre-apache-en-ubuntu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instal·lació de PHP sobre Apache en Ubuntu
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installacio-i-configuracio-de-mysql-sobre-ubuntu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instal·lació i configuració de MySQL sobre Ubuntu
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracio-per-a-connectar-se-a-bbdd-mysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuració per a connectar-se a BBDD MySQL
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conectar-per-php-a-una-bbdd-mysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conectar per PHP a una BBDD MySQL
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -982,6 +1056,100 @@ sudo systemctl start apache2
 sudo systemctl enable apache2
 echo &quot;&lt;h1&gt;Benvingut a la meua web d&#39;Apache en Ubuntu en una EC2&lt;/h1&gt;&quot; | sudo tee /var/www/html/index.html
 </code></pre></div>
+<h2 id="installacio-de-php-sobre-apache-en-ubuntu">Instal·lació de PHP sobre Apache en Ubuntu</h2>
+<div class="highlight"><pre><span></span><code>sudo apt update -y
+sudo apt install -y php libapache2-mod-php php-mysql
+sudo systemctl restart apache2
+</code></pre></div>
+<h2 id="installacio-i-configuracio-de-mysql-sobre-ubuntu">Instal·lació i configuració de MySQL sobre Ubuntu</h2>
+<div class="highlight"><pre><span></span><code>sudo apt update -y
+sudo apt install -y mysql-server
+sudo systemctl start mysql
+sudo systemctl enable mysql
+sudo systemctl status mysql
+
+#Creació d&#39;usuari per permetres conexions remotes (no solo desde localhost)
+# Entrar a MySQL com a root (en Ubuntu pot ser sense password)
+sudo mysql
+
+# Crear usuari que es puga connectar des de la xarxa privada corresponent (exemple: subnet 10.0.0.0/16)
+CREATE USER &#39;appuser&#39;@&#39;10.0.%&#39; IDENTIFIED BY &#39;ContrasenyaSegura123&#39;;
+
+# Donar-li privilegis sobre una base de dades concreta
+CREATE DATABASE appdb;
+GRANT ALL PRIVILEGES ON appdb.* TO &#39;appuser&#39;@&#39;10.0.%&#39;;
+
+# Actualitzar
+FLUSH PRIVILEGES;
+EXIT;
+
+#Configurar MySQL per admetre connexions remotes
+sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
+
+#Canviar bind-address per la direcció IP des d&#39;on ens connectarem (o tots)
+bind-address = 0.0.0.0
+
+#Reiniciar
+sudo systemctl restart mysql
+</code></pre></div>
+<p>No cal olvidar que cal permetre explicitament les connexions al port de MySQL, el <strong>3306</strong>.</p>
+<h2 id="configuracio-per-a-connectar-se-a-bbdd-mysql">Configuració per a connectar-se a BBDD MySQL</h2>
+<p>Desde la màquina client (des d'on volem connectar a la base de dades):</p>
+<div class="highlight"><pre><span></span><code>sudo apt install -y mysql-client
+mysql -h &lt;IP_privada_mysql&gt; -u appuser -p
+</code></pre></div>
+<p>Si entra correctament, està funcionant 👍🏼</p>
+<h2 id="conectar-per-php-a-una-bbdd-mysql">Conectar per PHP a una BBDD MySQL</h2>
+<p>A la instància del servidor web+php, crearem un fitxer php, per exemple <em>dbtest.php</em>:
+<div class="highlight"><pre><span></span><code>sudo nano /var/www/html/dbtest.php
+</code></pre></div></p>
+<p>Contingut del fitxer <em>dbtest.php</em>:</p>
+<div class="highlight"><pre><span></span><code>&lt;?php
+$servername = &quot;IP_PRIVADA_MYSQL&quot;;   // o hostname dins de la VPC
+$username = &quot;appuser&quot;;              // Usuari que has creat
+$password = &quot;ContrasenyaSegura123&quot;; // Contrasenya que has triat
+$dbname = &quot;appdb&quot;;                  // Base de dades creada
+
+// Crear connexió
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Comprovar connexió
+if ($conn-&gt;connect_error) {
+  die(&quot;Connexió fallida: &quot; . $conn-&gt;connect_error);
+}
+echo &quot;&lt;h2&gt;Connexió a MySQL correcta! 🎉&lt;/h2&gt;&quot;;
+
+// Opcional: crear una taula i inserir dades si no existeix
+$sql = &quot;CREATE TABLE IF NOT EXISTS proves (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nom VARCHAR(50) NOT NULL
+)&quot;;
+$conn-&gt;query($sql);
+
+// Inserir un registre de prova
+$conn-&gt;query(&quot;INSERT INTO proves (nom) VALUES (&#39;Hola des de PHP&#39;)&quot;);
+
+// Llegir dades
+$result = $conn-&gt;query(&quot;SELECT id, nom FROM proves&quot;);
+
+echo &quot;&lt;h3&gt;Dades llegides de la taula &#39;proves&#39;:&lt;/h3&gt;&quot;;
+if ($result-&gt;num_rows &gt; 0) {
+  while($row = $result-&gt;fetch_assoc()) {
+    echo &quot;ID: &quot; . $row[&quot;id&quot;]. &quot; - Nom: &quot; . $row[&quot;nom&quot;]. &quot;&lt;br&gt;&quot;;
+  }
+} else {
+  echo &quot;Taula buida.&quot;;
+}
+
+$conn-&gt;close();
+?&gt;
+</code></pre></div>
+<p>Guardem el fitxer i ens assegurem que té els permisos adequats:</p>
+<div class="highlight"><pre><span></span><code>sudo chown www-data:www-data /var/www/html/dbtest.php
+sudo chmod 644 /var/www/html/dbtest.php
+sudo systemctl restart apache2
+</code></pre></div>
+<p>I des del navegador accedim <em>http://IP_PÚBLICA_DE_LA_WEB/dbtest.php</em></p>
 
 
 

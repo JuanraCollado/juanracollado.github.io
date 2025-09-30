@@ -12,6 +12,8 @@
         <meta name="author" content="Juanra Collado">
       
       
+        <link rel="canonical" href="https://juanracollado.github.io/cloud/u3_continguts/">
+      
       
         <link rel="prev" href="../u2_practiques/">
       
@@ -764,6 +766,57 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#grups-de-seguretat-sg-i-nacls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Grups de seguretat (SG) i NACL's
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Grups de seguretat (SG) i NACL&#39;s">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#security-groups-grups-de-seguretat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Groups (Grups de Seguretat)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-access-control-lists-nacls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Access Control Lists (NACLs)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defensa-en-capes-defense-in-depth" class="md-nav__link">
+    <span class="md-ellipsis">
+      Defensa en capes (Defense in depth)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-practic-dus-conjunt-de-sg-i-nacls-arquitectura-de-3-capes-web-app-db" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple pràctic d'ús conjunt de SG i NACL's: Arquitectura de 3 capes (Web — App — DB)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1002,6 +1055,57 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#grups-de-seguretat-sg-i-nacls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Grups de seguretat (SG) i NACL's
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Grups de seguretat (SG) i NACL&#39;s">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#security-groups-grups-de-seguretat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Groups (Grups de Seguretat)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-access-control-lists-nacls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Access Control Lists (NACLs)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defensa-en-capes-defense-in-depth" class="md-nav__link">
+    <span class="md-ellipsis">
+      Defensa en capes (Defense in depth)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-practic-dus-conjunt-de-sg-i-nacls-arquitectura-de-3-capes-web-app-db" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple pràctic d'ús conjunt de SG i NACL's: Arquitectura de 3 capes (Web — App — DB)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1079,11 +1183,126 @@ Sense un Internet Gateway, les VPC's no tenen accés a Internet.</p>
 <p>Una vegada feta les pràctica 1 s'ha de realitzar el mòdul 5 fins al laboratori 2 (<em>Redes y entrega de contenido</em>) del curs d' <em>AWS Academy Cloud Foundations</em>.</p>
 </div>
 <hr />
-<hr />
+<h2 id="grups-de-seguretat-sg-i-nacls">Grups de seguretat (SG) i NACL's</h2>
+<h3 id="security-groups-grups-de-seguretat">Security Groups (Grups de Seguretat)</h3>
+<p>Els grups de seguretat ja s'estudiaren en la unitat 2. Un xicotet repàs:</p>
+<ul>
+<li>
+<p>Funcionen com un tallafoc virtual a nivell de instància.</p>
+</li>
+<li>
+<p>Stateful: si es permet una connexió entrant, la resposta està implícita per a la connexió sortint.</p>
+</li>
+<li>
+<p>Es defineixen regles d’entrada (inbound) i regles de sortida (outbound).</p>
+</li>
+<li>
+<p>No hi ha ordre de prioritat: es combinen totes les regles per determinar si un paquet és permès o no.</p>
+</li>
+<li>
+<p>Exemples típics: permetre SSH (port 22) només des d’adreça IP fixa, permetre HTTP (port 80 / 443) des de qualsevol lloc.</p>
+</li>
+</ul>
+<h3 id="network-access-control-lists-nacls">Network Access Control Lists (NACLs)</h3>
+<p>Les NACLs actuen a nivell de subxarxa, no d’instància, i són stateless. Açò significa que cal configurar tant les regles d’entrada com les de sortida de manera explícita. A més, les regles tenen un número de prioritat i s’apliquen en ordre.</p>
+<p>Les NACLs permeten tindre un control més fi i, sobretot, aplicar polítiques generals a tota una subxarxa. Per exemple, podries bloquejar tot el tràfic ICMP (ping) cap a les subxarxes públiques.</p>
+<p>Els NACL's permeten fer bloqueig explícit d'una IP mentre que el SG no ho permet.</p>
+<table>
+<thead>
+<tr>
+<th>Característica</th>
+<th>Security Groups (SG)</th>
+<th>Network ACLs (NACLs)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Nivell d'aplicació</strong></td>
+<td>S'apliquen a <strong>instàncies</strong> (nivell de NIC/ENI)</td>
+<td>S'apliquen a <strong>subxarxes senceres</strong></td>
+</tr>
+<tr>
+<td><strong>Tipus de filtre</strong></td>
+<td><strong>Stateful</strong>: si es permet l'entrada, la resposta ix automàticament</td>
+<td><strong>Stateless</strong>: cada regla d'entrada i eixida s'ha de definir explícitament</td>
+</tr>
+<tr>
+<td><strong>Regles per defecte</strong></td>
+<td>Tot el tràfic denegat fins que s'afegeixen regles</td>
+<td>Tot permés per defecte, però es pot denegar</td>
+</tr>
+<tr>
+<td><strong>Direccionalitat</strong></td>
+<td>Inbound i Outbound</td>
+<td>Inbound i Outbound (independents)</td>
+</tr>
+<tr>
+<td><strong>Prioritat</strong></td>
+<td>No hi ha ordre: totes les regles s'avaluen conjuntament</td>
+<td>Les regles es processen en <strong>ordre numèric</strong> (de menor a major)</td>
+</tr>
+<tr>
+<td><strong>Granularitat típica</strong></td>
+<td>Més <strong>precís</strong>: es pot aplicar a grup d'instàncies (p.ex. <em>SG-Web</em>, <em>SG-DB</em>)</td>
+<td>Més <strong>global</strong>: afecta totes les instàncies dins la subnet</td>
+</tr>
+<tr>
+<td><strong>Flexibilitat</strong></td>
+<td>Fàcil de reusar: pots assignar el mateix SG a moltes instàncies</td>
+<td>Menys flexible: una subnet només pot tindre un NACL actiu</td>
+</tr>
+<tr>
+<td><strong>Casos d'ús típics</strong></td>
+<td>Definir accessos de serveis (ex. Web 80/443, SSH restringit)</td>
+<td>“Capa extra” de seguretat: bloquejar IPs concretes, filtres generals de subnet</td>
+</tr>
+<tr>
+<td><strong>Exemple pràctic</strong></td>
+<td>Permetre SSH (22) només des de 203.0.113.5</td>
+<td>Denegar tràfic d'una IP sospitosa a tota la subnet</td>
+</tr>
+</tbody>
+</table>
+<h3 id="defensa-en-capes-defense-in-depth">Defensa en capes (Defense in depth)</h3>
+<p>El més recomanable és utilitzar ambdós mecanismes: SG per protegir cada instància i NACL per filtrar a nivell de subxarxa. D’aquesta manera, si una capa falla, encara tens l’altra.</p>
+<p><img src="../../assets/u3/u3_1.png" alt="u3_1" class="centered-image-80"/></p>
+<h3 id="exemple-practic-dus-conjunt-de-sg-i-nacls-arquitectura-de-3-capes-web-app-db">Exemple pràctic d'ús conjunt de SG i NACL's: <br> Arquitectura de 3 capes (Web — App — DB)</h3>
+<ul>
+<li>
+<p>Capa Web (subxarxa pública)</p>
+<ul>
+<li>SG-Web: permet només HTTP/HTTPS (80, 443) des de qualsevol lloc, i SSH només des d’una IP concreta del professor/admin.</li>
+<li>NACL pública: denega tràfic de certes IPs sospitoses/blocs de països, independentment de SG.</li>
+</ul>
+</li>
+<li>
+<p>Capa App (subxarxa privada)</p>
+<ul>
+<li>SG-App: permet tràfic només des de SG-Web al port 8080 (comunicació web → app).</li>
+<li>NACL privada (app): denega qualsevol tràfic entrant que no vinga de la subnet pública legítima.</li>
+</ul>
+</li>
+<li>
+<p>Capa DB (subxarxa privada)</p>
+<ul>
+<li>SG-DB: només permet MySQL (3306) des de SG-App.</li>
+<li>NACL privada (db): segona capa que bloqueja qualsevol cosa que no siga 3306 des de la subnet app.</li>
+</ul>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Exercici sugerit</p>
+<p>Dibuixa com seria aquesta infraestructura. Per fer-ho, pots gastar <a href="https://app.diagrams.net/">draw.io</a>.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Pràctica sugerida</p>
+<p>En aquest punt dels continguts, es recomana fer la <a href="../u3_practiques/">pràctica 2 de la unitat 3</a>.</p>
+</div>
 <div class="admonition tip">
 <p class="admonition-title">Entregable</p>
-<p>Recorda que en Aules tens l'enunciat de l'exercici entregable.</p>
+<p>En aquest punt es recomana realitzar l'exercici 1 de l'entregable d'aquesta unitat disponile a Aules.</p>
 </div>
+<hr />
 
 
 
