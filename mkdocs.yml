@@ -68,8 +68,8 @@ nav:
        - Continguts: cloud/u2_continguts.md
        - Pràctiques: cloud/u2_practiques.md
     - U3 - Xarxes virtuals i serveis de còmput:
-       - Continguts: construccio.md  
-     # - Pràctiques: construccio.md
+       - Continguts: cloud/u3_continguts.md  
+       - Pràctiques: cloud/u3_practiques.md
     - Intruccions d'interés: cloud/instruccions.md 
     - Enllaços d'interés: cloud/links.md 
 

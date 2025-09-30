@@ -277,4 +277,7 @@ Menys utilitzades en entorns senzills, però útils per capes de seguretat addic
 !!! tip "Pràctica sugerida"
     En aquest punt dels continguts, es recomana fer la [pràctica 5 i pràctica 6 de la unitat 2](u2_practiques.md).
 
+!!! tip "Entregable"
+    Recorda que en Aules tens l'enunciat de l'exercici entregable.
+
 
