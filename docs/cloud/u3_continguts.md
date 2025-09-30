@@ -59,12 +59,74 @@ Les taules de rutes (route tables) defineixen quin “destí” (CIDR) es dirige
     Una vegada feta les pràctica 1 s'ha de realitzar el mòdul 5 fins al laboratori 2 (*Redes y entrega de contenido*) del curs d' *AWS Academy Cloud Foundations*.
 
 ---
+## Grups de seguretat (SG) i NACL's
+
+### Security Groups (Grups de Seguretat)
+
+Els grups de seguretat ja s'estudiaren en la unitat 2. Un xicotet repàs:
+
+- Funcionen com un tallafoc virtual a nivell de instància.
+
+- Stateful: si es permet una connexió entrant, la resposta està implícita per a la connexió sortint.
+
+- Es defineixen regles d’entrada (inbound) i regles de sortida (outbound).
+
+- No hi ha ordre de prioritat: es combinen totes les regles per determinar si un paquet és permès o no.
+
+- Exemples típics: permetre SSH (port 22) només des d’adreça IP fixa, permetre HTTP (port 80 / 443) des de qualsevol lloc.
+
+### Network Access Control Lists (NACLs)
+
+Les NACLs actuen a nivell de subxarxa, no d’instància, i són stateless. Açò significa que cal configurar tant les regles d’entrada com les de sortida de manera explícita. A més, les regles tenen un número de prioritat i s’apliquen en ordre.
+
+Les NACLs permeten tindre un control més fi i, sobretot, aplicar polítiques generals a tota una subxarxa. Per exemple, podries bloquejar tot el tràfic ICMP (ping) cap a les subxarxes públiques.
+
+Els NACL's permeten fer bloqueig explícit d'una IP mentre que el SG no ho permet.
+
+| Característica                  | Security Groups (SG)                           | Network ACLs (NACLs)                       |
+|---------------------------------|-----------------------------------------------|--------------------------------------------|
+| **Nivell d'aplicació**          | S'apliquen a **instàncies** (nivell de NIC/ENI)| S'apliquen a **subxarxes senceres**        |
+| **Tipus de filtre**             | **Stateful**: si es permet l'entrada, la resposta ix automàticament | **Stateless**: cada regla d'entrada i eixida s'ha de definir explícitament |
+| **Regles per defecte**          | Tot el tràfic denegat fins que s'afegeixen regles | Tot permés per defecte, però es pot denegar |
+| **Direccionalitat**             | Inbound i Outbound                            | Inbound i Outbound (independents)           |
+| **Prioritat**                   | No hi ha ordre: totes les regles s'avaluen conjuntament | Les regles es processen en **ordre numèric** (de menor a major) |
+| **Granularitat típica**          | Més **precís**: es pot aplicar a grup d'instàncies (p.ex. *SG-Web*, *SG-DB*) | Més **global**: afecta totes les instàncies dins la subnet |
+| **Flexibilitat**                | Fàcil de reusar: pots assignar el mateix SG a moltes instàncies | Menys flexible: una subnet només pot tindre un NACL actiu |
+| **Casos d'ús típics**           | Definir accessos de serveis (ex. Web 80/443, SSH restringit) | “Capa extra” de seguretat: bloquejar IPs concretes, filtres generals de subnet |
+| **Exemple pràctic**             | Permetre SSH (22) només des de 203.0.113.5     | Denegar tràfic d'una IP sospitosa a tota la subnet |
 
 
+### Defensa en capes (Defense in depth)
 
----
+El més recomanable és utilitzar ambdós mecanismes: SG per protegir cada instància i NACL per filtrar a nivell de subxarxa. D’aquesta manera, si una capa falla, encara tens l’altra.
+
+<img src="../../assets/u3/u3_1.png" alt="u3_1" class="centered-image-80"/>
+
+### Exemple pràctic d'ús conjunt de SG i NACL's: <br> Arquitectura de 3 capes (Web — App — DB)
+ 
+- Capa Web (subxarxa pública)
+    - SG-Web: permet només HTTP/HTTPS (80, 443) des de qualsevol lloc, i SSH només des d’una IP concreta del professor/admin.
+    - NACL pública: denega tràfic de certes IPs sospitoses/blocs de països, independentment de SG.
+
+- Capa App (subxarxa privada)
+    - SG-App: permet tràfic només des de SG-Web al port 8080 (comunicació web → app).
+    - NACL privada (app): denega qualsevol tràfic entrant que no vinga de la subnet pública legítima.
+
+- Capa DB (subxarxa privada)
+    - SG-DB: només permet MySQL (3306) des de SG-App.
+    - NACL privada (db): segona capa que bloqueja qualsevol cosa que no siga 3306 des de la subnet app.
+
+!!! tip "Exercici sugerit"
+    Dibuixa com seria aquesta infraestructura. Per fer-ho, pots gastar [draw.io](https://app.diagrams.net/).
+
+!!! tip "Pràctica sugerida"
+    En aquest punt dels continguts, es recomana fer la [pràctica 2 de la unitat 3](u3_practiques.md).
 
 !!! tip "Entregable"
-    Recorda que en Aules tens l'enunciat de l'exercici entregable.
+    En aquest punt es recomana realitzar l'exercici 1 de l'entregable d'aquesta unitat disponile a Aules.
+    
+---
+
+
 
 
