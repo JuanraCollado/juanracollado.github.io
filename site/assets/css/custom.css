@@ -1,5 +1,5 @@
 /*Imagen centrada. Hay que setear la clase directamente*/
-.centered-image {
+.centered-image, .centered-image-80 {
     display: block;
     margin-left: auto;
     margin-right: auto;

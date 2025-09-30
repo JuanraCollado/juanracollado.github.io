@@ -1,4 +1,4 @@
-#U2 - 🌍 Infraestructura global i serveis bàsics: EC2 i seguretat inicial
+# U2 - 🌍 Infraestructura global i serveis bàsics: EC2 i seguretat inicial
 
 **🎯 RA's vinculats**: RA1, RA2, RA3
 

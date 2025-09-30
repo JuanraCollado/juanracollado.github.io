@@ -1,8 +1,12 @@
-#U3 - 🔐 Xarxes virtuals i serveis de còmput
+# U3 - 🔐 Xarxes virtuals i serveis de còmput
 
 **🎯 RA's vinculats**: RA2, RA3
 
 ## VPC i subxarxes: concepte i desplegament bàsic
+
+!!! tip "Repàs de xarxes"
+
+    Aquesta unitat dona per assolits els coneixements respecte a xarxes, subxarxes i direccionament. Pots trobar un repàs  [ací](../../suport/repasXarxes). 
 
 ### Què és una VPC (Virtual Private Cloud)
 En AWS, una **VPC** és una xarxa virtual aïllada dins del núvol on pots definir rangs d’adreces IP, subxarxes, rutes i policies de seguretat. És l’equivalent d’un centre de dades virtual, però amb la flexibilitat d’escala, integració i gestió que ofereix el núvol.

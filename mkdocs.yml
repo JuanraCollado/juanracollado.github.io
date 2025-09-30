@@ -70,8 +70,11 @@ nav:
     - U3 - Xarxes virtuals i serveis de còmput:
        - Continguts: cloud/u3_continguts.md  
        - Pràctiques: cloud/u3_practiques.md
+
     - Intruccions d'interés: cloud/instruccions.md 
     - Enllaços d'interés: cloud/links.md 
+  - Material de suport: 
+        - Repàs de xarxes: suport/repasXarxes.md 
 
 
 # Extensiones de Markdown
