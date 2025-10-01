@@ -3,7 +3,7 @@
     
     Per començar a fer aquestes pràctiques, es imprescindible haver  completat les de la unitat 2.
 ---
-## Juanra - Pràctica 1 - Disseny mínim amb VPC + Subnet + IGW
+## Pràctica 1 - Disseny mínim amb VPC + Subnet + IGW
 
 🎯 Objectiu: En aquesta pràctica inicial, farem un disseny mínim:
 
@@ -177,3 +177,9 @@ Sobre una VPC nova, crea dos subxarxes públiques i una privada, cadascuna amb u
 Pots trobar a l'apartat [d'instruccions d'interés](instruccions.md) un pas a pas sobre com instal·lar Apache+PHP, com instal·lar el servidor de base de dades MySQL, com connectar ambdues instàncies i com fer-ho des de PHP.
 
 Si ho aconseguixes, tindràs una infraestructura web protegida simple, dinàmica, protegida i resilient.
+
+---
+
+## Pràctica 4 - 
+
+

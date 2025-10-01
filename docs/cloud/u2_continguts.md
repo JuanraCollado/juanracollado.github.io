@@ -140,6 +140,62 @@ AWS assegura la infraestructura física i del núvol, mentre que el client és r
     En aquest punt es recomana realitzar fins la secció 1 (*Modelo de responsabilidad compartida de AWS*) del mòdul 4 (*Seguridad en la nube*) del curs d' *AWS Academy Cloud Foundations*.
 ---
 
+## IAM: usuaris, grups i rols
+
+En qualsevol infraestructura al núvol, la seguretat és un pilar fonamental. A AWS, aquesta gestió d’identitats i permisos es fa a través del servei IAM (Identity and Access Management). IAM ens permet controlar qui pot accedir als nostres recursos, amb quins permisos i sota quines condicions.
+
+El primer que hem d’entendre és que en AWS hi ha dos grans tipus d’identitats:
+
+- **Usuaris i grups**: representen persones que accedeixen al sistema (administradors, estudiants, desenvolupadors, etc.).
+
+- **Rols**: representen aplicacions o serveis (com una instància EC2) que necessiten permisos temporals per a funcionar.
+
+Gràcies a IAM podem aplicar el principi de mínim privilegi, és a dir, donar a cada entitat només els permisos estrictament necessaris. Això redueix el risc d’errors i atacs.
+
+### Usuaris i grups
+
+Un **usuari** és una identitat individual dins d’AWS. Pot tindre credencials d’accés a la consola (usuari i contrasenya), o bé claus d’accés per a utilitzar la CLI o el SDK.
+
+Un **grup** és una manera d’agrupar usuaris i assignar-los permisos de manera col·lectiva. Per exemple, podem crear un grup s3-readonly i posar dins d’ell tots els estudiants. D’aquesta manera, no cal assignar permisos un a un: amb assignar la política al grup és suficient.
+
+Les **polítiques** defineixen quins permisos té un usuari, grup o rol. Són documents en format JSON que especifiquen quines accions estan permeses o denegades, sobre quins recursos i amb quines condicions. Per exemple, una política pot indicar que un usuari només pot llistar (s3:ListBucket) i llegir (s3:GetObject) objectes d’un bucket concret (els buckets són serveis on s'emmagatzema informació que estudiarem a la següent unitat)
+
+AWS ofereix dos tipus de polítiques:
+
+- **AWS managed policies**: polítiques ja preparades per AWS, útils per a casos habituals.
+
+- **Customer managed policies**: polítiques que creem nosaltres, totalment personalitzades.
+
+Bones pràctiques importants:
+
+- No utilitzar mai el compte root per al dia a dia.
+
+- Activar MFA (Multi-Factor Authentication) per a tots els usuaris importants.
+
+- Revisar i rotar claus d’accés de manera periòdica.
+
+### Rols
+
+Els **rols** són un altre tipus d’identitat en IAM, però no estan pensats per a persones, sinó per a serveis. Per exemple, una instància EC2 pot necessitar llegir dades d’un bucket S3. En lloc de configurar claus d’accés dins de la màquina (cosa insegura), li assignem un rol. Aquest rol genera credencials temporals i les gestiona de manera automàtica, sense que hàgem d’escriure res en cap fitxer de configuració.
+
+Això no sols és més còmode, sinó sobretot molt més segur: si algú accedira a la instància, no podria trobar unes claus permanents reutilitzables.
+
+Alguns usos típics dels rols són:
+
+- EC2 amb permisos per accedir a S3.
+
+- Aplicacions que envien mètriques a CloudWatch (servei de monitorització).
+
+- Serveis que necessiten llegir secrets des de Secrets Manager (servei d'emmagatzenament de "secrets", com contrasenyes).
+
+- Compartir recursos entre comptes d’AWS diferents.
+
+!!! tip "Curs AWS Academy Cloud Foundations "
+    L'entorn acadèmic d'AWS no permet, de moment, treballar amb grups i usuaris per tant no existeix cap pràctica associada al nostre laboratori. No obstant, teniu disponible el laboratori del mòdul 4 on es treballa aquest aspecte.
+    En aquest punt s'ha de finalitzar el mòdul 4  (*Modelo de responsabilidad compartida de AWS*) del curs d' *AWS Academy Cloud Foundations*.
+
+---
+
 ## Introducció a Amazon EC2
 
 Amazon Elastic Compute Cloud (EC2) és un servei fonamental dins d’AWS. Permet llogar màquines virtuals a la carta (anomenades instàncies) que es poden utilitzar per executar aplicacions, pàgines web, entorns de desenvolupament o qualsevol altra càrrega de treball informàtica.
@@ -270,9 +326,6 @@ Menys utilitzades en entorns senzills, però útils per capes de seguretat addic
 
 !!! tip "Pràctica sugerida"
     En aquest punt dels continguts, es recomana fer la [pràctica 4 de la unitat 2](u2_practiques.md).
-
-!!! tip "Curs AWS Academy Cloud Foundations "
-    Una vegada feta les pràctica 4 s'ha de realitzar el mòdul 4 (*Seguridad en la nube*) del curs d' *AWS Academy Cloud Foundations*.
 
 !!! tip "Pràctica sugerida"
     En aquest punt dels continguts, es recomana fer la [pràctica 5 i pràctica 6 de la unitat 2](u2_practiques.md).

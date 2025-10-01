@@ -125,8 +125,3 @@ El més recomanable és utilitzar ambdós mecanismes: SG per protegir cada inst�
 !!! tip "Entregable"
     En aquest punt es recomana realitzar l'exercici 1 de l'entregable d'aquesta unitat disponile a Aules.
     
----
-
-
-
-
