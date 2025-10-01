@@ -730,6 +730,39 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#iam-usuaris-grups-i-rols" class="md-nav__link">
+    <span class="md-ellipsis">
+      IAM: usuaris, grups i rols
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="IAM: usuaris, grups i rols">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usuaris-i-grups" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usuaris i grups
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rols" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rols
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#introduccio-a-amazon-ec2" class="md-nav__link">
     <span class="md-ellipsis">
       Introducció a Amazon EC2
@@ -1239,6 +1272,39 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#iam-usuaris-grups-i-rols" class="md-nav__link">
+    <span class="md-ellipsis">
+      IAM: usuaris, grups i rols
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="IAM: usuaris, grups i rols">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usuaris-i-grups" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usuaris i grups
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rols" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rols
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#introduccio-a-amazon-ec2" class="md-nav__link">
     <span class="md-ellipsis">
       Introducció a Amazon EC2
@@ -1559,6 +1625,67 @@ Revisa la documentació sobre la responsabilitat compartida que ofereix <a href=
 <p>En aquest punt es recomana realitzar fins la secció 1 (<em>Modelo de responsabilidad compartida de AWS</em>) del mòdul 4 (<em>Seguridad en la nube</em>) del curs d' <em>AWS Academy Cloud Foundations</em>.</p>
 </div>
 <hr />
+<h2 id="iam-usuaris-grups-i-rols">IAM: usuaris, grups i rols</h2>
+<p>En qualsevol infraestructura al núvol, la seguretat és un pilar fonamental. A AWS, aquesta gestió d’identitats i permisos es fa a través del servei IAM (Identity and Access Management). IAM ens permet controlar qui pot accedir als nostres recursos, amb quins permisos i sota quines condicions.</p>
+<p>El primer que hem d’entendre és que en AWS hi ha dos grans tipus d’identitats:</p>
+<ul>
+<li>
+<p><strong>Usuaris i grups</strong>: representen persones que accedeixen al sistema (administradors, estudiants, desenvolupadors, etc.).</p>
+</li>
+<li>
+<p><strong>Rols</strong>: representen aplicacions o serveis (com una instància EC2) que necessiten permisos temporals per a funcionar.</p>
+</li>
+</ul>
+<p>Gràcies a IAM podem aplicar el principi de mínim privilegi, és a dir, donar a cada entitat només els permisos estrictament necessaris. Això redueix el risc d’errors i atacs.</p>
+<h3 id="usuaris-i-grups">Usuaris i grups</h3>
+<p>Un <strong>usuari</strong> és una identitat individual dins d’AWS. Pot tindre credencials d’accés a la consola (usuari i contrasenya), o bé claus d’accés per a utilitzar la CLI o el SDK.</p>
+<p>Un <strong>grup</strong> és una manera d’agrupar usuaris i assignar-los permisos de manera col·lectiva. Per exemple, podem crear un grup s3-readonly i posar dins d’ell tots els estudiants. D’aquesta manera, no cal assignar permisos un a un: amb assignar la política al grup és suficient.</p>
+<p>Les <strong>polítiques</strong> defineixen quins permisos té un usuari, grup o rol. Són documents en format JSON que especifiquen quines accions estan permeses o denegades, sobre quins recursos i amb quines condicions. Per exemple, una política pot indicar que un usuari només pot llistar (s3:ListBucket) i llegir (s3:GetObject) objectes d’un bucket concret (els buckets són serveis on s'emmagatzema informació que estudiarem a la següent unitat)</p>
+<p>AWS ofereix dos tipus de polítiques:</p>
+<ul>
+<li>
+<p><strong>AWS managed policies</strong>: polítiques ja preparades per AWS, útils per a casos habituals.</p>
+</li>
+<li>
+<p><strong>Customer managed policies</strong>: polítiques que creem nosaltres, totalment personalitzades.</p>
+</li>
+</ul>
+<p>Bones pràctiques importants:</p>
+<ul>
+<li>
+<p>No utilitzar mai el compte root per al dia a dia.</p>
+</li>
+<li>
+<p>Activar MFA (Multi-Factor Authentication) per a tots els usuaris importants.</p>
+</li>
+<li>
+<p>Revisar i rotar claus d’accés de manera periòdica.</p>
+</li>
+</ul>
+<h3 id="rols">Rols</h3>
+<p>Els <strong>rols</strong> són un altre tipus d’identitat en IAM, però no estan pensats per a persones, sinó per a serveis. Per exemple, una instància EC2 pot necessitar llegir dades d’un bucket S3. En lloc de configurar claus d’accés dins de la màquina (cosa insegura), li assignem un rol. Aquest rol genera credencials temporals i les gestiona de manera automàtica, sense que hàgem d’escriure res en cap fitxer de configuració.</p>
+<p>Això no sols és més còmode, sinó sobretot molt més segur: si algú accedira a la instància, no podria trobar unes claus permanents reutilitzables.</p>
+<p>Alguns usos típics dels rols són:</p>
+<ul>
+<li>
+<p>EC2 amb permisos per accedir a S3.</p>
+</li>
+<li>
+<p>Aplicacions que envien mètriques a CloudWatch (servei de monitorització).</p>
+</li>
+<li>
+<p>Serveis que necessiten llegir secrets des de Secrets Manager (servei d'emmagatzenament de "secrets", com contrasenyes).</p>
+</li>
+<li>
+<p>Compartir recursos entre comptes d’AWS diferents.</p>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Curs AWS Academy Cloud Foundations </p>
+<p>L'entorn acadèmic d'AWS no permet, de moment, treballar amb grups i usuaris per tant no existeix cap pràctica associada al nostre laboratori. No obstant, teniu disponible el laboratori del mòdul 4 on es treballa aquest aspecte.
+En aquest punt s'ha de finalitzar el mòdul 4  (<em>Modelo de responsabilidad compartida de AWS</em>) del curs d' <em>AWS Academy Cloud Foundations</em>.</p>
+</div>
+<hr />
 <h2 id="introduccio-a-amazon-ec2">Introducció a Amazon EC2</h2>
 <p>Amazon Elastic Compute Cloud (EC2) és un servei fonamental dins d’AWS. Permet llogar màquines virtuals a la carta (anomenades instàncies) que es poden utilitzar per executar aplicacions, pàgines web, entorns de desenvolupament o qualsevol altra càrrega de treball informàtica.</p>
 <p>📌 Es diu elastic perquè podem crear, aturar, eliminar o redimensionar aquestes instàncies de manera ràpida segons les necessitats.</p>
@@ -1690,10 +1817,6 @@ Revisa la documentació sobre la responsabilitat compartida que ofereix <a href=
 <div class="admonition tip">
 <p class="admonition-title">Pràctica sugerida</p>
 <p>En aquest punt dels continguts, es recomana fer la <a href="../u2_practiques/">pràctica 4 de la unitat 2</a>.</p>
-</div>
-<div class="admonition tip">
-<p class="admonition-title">Curs AWS Academy Cloud Foundations </p>
-<p>Una vegada feta les pràctica 4 s'ha de realitzar el mòdul 4 (<em>Seguridad en la nube</em>) del curs d' <em>AWS Academy Cloud Foundations</em>.</p>
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Pràctica sugerida</p>
