@@ -847,6 +847,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="4. Comprovar el funcionament">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-ssh-intern-ec2-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1. SSH intern (EC2-EC2)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -864,11 +879,53 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#practica-4-" class="md-nav__link">
+  <a href="#practica-4-funcio-lambda" class="md-nav__link">
     <span class="md-ellipsis">
-      Pràctica 4 -
+      Pràctica 4 - Funció Lambda
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Pràctica 4 - Funció Lambda">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-crear-la-funcio" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Crear la funció
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-codi-de-la-funcio" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Codi de la funció
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-test-de-la-funcio" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Test de la funció
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-revisio-dels-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Revisió dels logs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1147,6 +1204,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="4. Comprovar el funcionament">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-ssh-intern-ec2-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1. SSH intern (EC2-EC2)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -1164,11 +1236,53 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#practica-4-" class="md-nav__link">
+  <a href="#practica-4-funcio-lambda" class="md-nav__link">
     <span class="md-ellipsis">
-      Pràctica 4 -
+      Pràctica 4 - Funció Lambda
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Pràctica 4 - Funció Lambda">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-crear-la-funcio" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Crear la funció
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-codi-de-la-funcio" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Codi de la funció
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-test-de-la-funcio" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Test de la funció
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-revisio-dels-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Revisió dels logs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1290,12 +1404,17 @@
 <p>Totes les subxarxes, per defecte, tenen accés als elements que estan dins de la mateixa VPC. És per això pel que no cal crear una RT a la privada, ja que aquesta no volem que tinga accés a Internet, sino que sols es puga accedir des de la privada.</p>
 </div>
 <h3 id="5-verificacio-de-la-practica">5. Verificació de la pràctica</h3>
-<ol>
-<li>Comprova que la subxarxa pública té accés a internet. Per fer-ho, pots crear una EC2 i fer un ping cap a l'exterior.</li>
-<li>Comprova que la subxarxa privada no té accés a internet. </li>
-<li>Comprova que entre la subxarxa pública i la privada tenen connexió. Recorda que per fer-ho, cal utilitzar les IP's privades ja que ambdues màquines estan dins de la mateixa VPC.</li>
-<li>Prova a connectar des de el bastió al EC2 de la subxarxa privada per SSH. Si cal, dona-li permisos de SG per poder fer-ho.</li>
-</ol>
+<p>1.Comprova que la subxarxa pública té accés a internet. Per fer-ho, pots crear una EC2 i fer un ping cap a l'exterior.</p>
+<div class="admonition danger">
+<p class="admonition-title">IMPORTANT</p>
+<p>És important que durant la creació del EC2, seleccionem la VPC i la subxarxa en la qual volem que estiga l'EC2, sinó ho farà a la VPC per defecte.
+<img src="../../assets/u3/p1_10.png" alt="p1_10" class="centered-image-50"/></p>
+<p><img src="../../assets/u3/p1_11.png" alt="p1_11" class="centered-image-50"/></p>
+<p>També és important que si és estem a una subxarxa pública (accessible desde fora), li diguem que ens autoassigne una ip pública.</p>
+</div>
+<p>2.Comprova que la subxarxa privada no té accés a internet. </p>
+<p>3.Comprova que entre la subxarxa pública i la privada tenen connexió. Recorda que per fer-ho, cal utilitzar les IP's privades ja que ambdues màquines estan dins de la mateixa VPC.</p>
+<p>4.Prova a connectar des de el bastió al EC2 de la subxarxa privada per SSH. Si cal, dona-li permisos de SG per poder fer-ho.</p>
 <div class="admonition info">
 <p class="admonition-title">No borrar aquesta pràctica</p>
 <p>La pràctica 2 partix de la pràctica 1 per tant s'aconsella no resetejar el laboratori encara.</p>
@@ -1355,7 +1474,7 @@ Això només es pot aconseguir amb un NACL.</p>
 <p><img src="../../assets/u3/p2_4.png" alt="p2_4" class="centered-image-80"/></p>
 <h3 id="4-comprovar-el-funcionament">4. Comprovar el funcionament</h3>
 <ol>
-<li>SSH desde bastió a privada -&gt; OK, estem dins del rang permés.</li>
+<li>SSH desde bastió a privada -&gt; OK, estem dins del rang permés (Revisar punt 4.1)</li>
 <li>Des de qualsevol màquina, HTTP (per exemple, des del navegador) -&gt; OK. El port 80 està permés per a tots.</li>
 <li>Com que no podem simular una IP de forma fàcil, confiarem en que si vinguera una connexió d'aquesta direcció es bloquejaria.</li>
 </ol>
@@ -1364,6 +1483,38 @@ Això només es pot aconseguir amb un NACL.</p>
 <p>Els SG són suficients per protegir cas a cas, però no poden fer DENY explícit.
 El NACL pot actuar com un tallafocs de subnet: encara que algú erròniament obri el SG a 0.0.0.0/0, la subnet té un mur per defecte contra IPs sospitoses.</p>
 </div>
+<h4 id="41-ssh-intern-ec2-ec2">4.1. SSH intern (EC2-EC2)</h4>
+<p>A la unitat anterior es va estudiar com connectar per SSH desde un client extern (el nostre terminal del nostre PC, per exemple) a una EC2 que tenim a AWS però, i si una vegada connectats a aquesta màquina volem fer SSH a altra màquina que està dins de la VPC, com és el cas d'un bastió?</p>
+<p>Donat que, si ho hem fet bé, totes les instàncies comparteixen les mateixes claus, no es massa complicat. Cal seguir aquests pasos tant en sistemes Linux com Mac. Per a Windows es pot seguir el següent <a href="https://repost.aws/es/knowledge-center/ec2-linux-private-subnet-bastion-host">article oficial d'AWS</a>.</p>
+<p>Aquest procés aprofita que es gasta la mateixa clau per fer un reenviament d'agent SSH i així evitar que tinga que passar-me la clau <em>.pem</em> a totes les instàncies sino que sols té que estar en la primera a la que ens connectem, en aquest cas, el bastió.</p>
+<p>En primer lloc, comprovem que la clau té els permisos adequats (400) i executarem les següents instruccions des de terminal:</p>
+<ul>
+<li>
+<p>Executem ssh-agent
+<div class="highlight"><pre><span></span><code>eval $(ssh-agent)
+</code></pre></div></p>
+</li>
+<li>
+<p>Carreguem en memòria la clau privada de la instància
+<div class="highlight"><pre><span></span><code>ssh-add labsuser.pem
+</code></pre></div></p>
+</li>
+<li>
+<p>Revisem que la clau s'ha afegit correctament
+<div class="highlight"><pre><span></span><code>ssh-add -l
+</code></pre></div></p>
+</li>
+<li>
+<p>Ara ja sols ens queda connectar amb l'EC2 de la subxarxa pública. Amb l'opció -A, les claus es mantenen en memòria i no es necessari utilitzar el -i indicant-li el fitxer .pem
+<div class="highlight"><pre><span></span><code>ssh -A ec2-user@direccióIpPublica
+</code></pre></div></p>
+</li>
+<li>
+<p>Una vegada connectats a la instància pública, des d'ella, podrem connectarnos a la instància de la subxarxa privada utilitzant la seua direcció IP privada
+<div class="highlight"><pre><span></span><code>ssh -A ec2-user@direccióIpPrivada
+</code></pre></div></p>
+</li>
+</ul>
 <hr />
 <h2 id="practica-3-opcional-servidor-web-apache-php-mysql">Pràctica 3 (opcional) - Servidor Web Apache + PHP + MySQL</h2>
 <p>Sobre una VPC nova, crea dos subxarxes públiques i una privada, cadascuna amb una EC2 amb Ubuntu dins.</p>
@@ -1374,8 +1525,52 @@ El NACL pot actuar com un tallafocs de subnet: encara que algú erròniament obr
 </ul>
 <p>Pots trobar a l'apartat <a href="../instruccions/">d'instruccions d'interés</a> un pas a pas sobre com instal·lar Apache+PHP, com instal·lar el servidor de base de dades MySQL, com connectar ambdues instàncies i com fer-ho des de PHP.</p>
 <p>Si ho aconseguixes, tindràs una infraestructura web protegida simple, dinàmica, protegida i resilient.</p>
+<div class="admonition tip">
+<p class="admonition-title">Vídeo a Aules</p>
+<p>Tens un vídeo a Aules amb un pas a pas de la pràctica.</p>
+</div>
 <hr />
-<h2 id="practica-4-">Pràctica 4 -</h2>
+<h2 id="practica-4-funcio-lambda">Pràctica 4 - Funció Lambda</h2>
+<p>En aquesta pràctica crearem una funció Lambda molt simple, la invocarem manualment des del consola (test) i consultarem els logs per comprendre el cicle de vida d’una invocació.</p>
+<h3 id="1-crear-la-funcio">1. Crear la funció</h3>
+<ul>
+<li>Lambda-&gt;Create function<ul>
+<li><strong>Function Name</strong>: Li posem un nom a la funció. <em>hello_world_lab</em> (per exemple)</li>
+<li><strong>Runtime</strong>: Elegim el llenguatge en el que volem programar la funció. Gastarem Node.js (per exemple)</li>
+<li><strong>Execution Role</strong>: Triarem un dels existents del laboratori.</li>
+</ul>
+</li>
+</ul>
+<p><img src="../../assets/u3/p4_1.png" alt="p4_1" class="centered-image-80"/></p>
+<h3 id="2-codi-de-la-funcio">2. Codi de la funció</h3>
+<ul>
+<li>Des de la pestanya de <em>Code</em>, escriurem el codi associat a la nostra funció. Podem copiar i pegar el següent fragment.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>export const handler = async (event) =&gt; {
+  console.log(&quot;Lambda invocada amb l&#39;event:&quot;, JSON.stringify(event));
+  return {
+      statusCode: 200,
+      body: &quot;Hola des de Lambda! Funció &#39;hello_world_lab&#39; executada correctament.&quot;
+  };
+};
+</code></pre></div>
+<p>Aquest codi el que fa es quan rep un event, escriu al log el missatge "Lambda invocada..." i torna al client que l'ha cridat un JSON amb codi 200 i com a com un missatge per dir-li que s'ha executat correctament.</p>
+<p><img src="../../assets/u3/p4_2.png" alt="p4_2" class="centered-image-80"/></p>
+<p>Per a desplegar la funció, li donarem al botó <em>Deploy</em></p>
+<p><img src="../../assets/u3/p4_3.png" alt="p4_2" class="centered-image-50"/></p>
+<h3 id="3-test-de-la-funcio">3. Test de la funció</h3>
+<p>Des de la pestanya <em>Test</em>, crearem un nou event. Este event simularia el que llançaria la funció i podem (si volem), passar-li paràmetres en format JSON.</p>
+<p><img src="../../assets/u3/p4_4.png" alt="p4_4" class="centered-image-80"/></p>
+<p>I una vegada tot configurat, li donem al botó <em>Test</em> i si tot ha anat bé, ens mostrarà el següent missatge (o similar):</p>
+<p><img src="../../assets/u3/p4_5.png" alt="p4_5" class="centered-image-80"/></p>
+<p>On podem comprovar que ens està tornant en el que havíem programat a la nostra funció.</p>
+<h3 id="4-revisio-dels-logs">4. Revisió dels logs</h3>
+<p>Els logs són sempre molt importants per entendre el cicle de vida i els possibles errors que ens dona un servei o aplicació. En aquest cas, al mateix missatge d'èxit, també ens apareix els logs que s'han generat i podem revisar que el que haviem escrit al <em>console.log</em> apareix al log del sistema junt a altra informació important.</p>
+<p><img src="../../assets/u3/p4_6.png" alt="p4_6" class="centered-image-80"/></p>
+<p>Lambda escriu tots els logs a <em>CloudWatch</em>, servei de monitorització que s'estudiarà a la unitat 6. Per revisar-ho podem accedir al servei i obrir <em>Log Groups</em>.</p>
+<p><img src="../../assets/u3/p4_7.png" alt="p4_7" class="centered-image-80"/></p>
+<p>Podem observar con un d'ells és el del Lamba que acabe de crear. Si accedisc a ell i consulte l'últim <em>Log Stream</em> disponible, trobaré el log generats per aquest servei en la seua última execució, es a dir, la que hem realitzat nosaltres.</p>
+<p><img src="../../assets/u3/p4_8.png" alt="p4_8" class="centered-image-80"/></p>
 
 
 

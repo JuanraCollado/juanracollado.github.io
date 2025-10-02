@@ -817,6 +817,48 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#introduccio-a-aws-lambda" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducció a AWS Lambda
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducció a AWS Lambda">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-lambda-i-per-a-que-serveix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Què és Lambda i per a què serveix
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integracions-habituals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integracions habituals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seguretat-rol-dexecucio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Seguretat: rol d’execució
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1106,6 +1148,48 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#introduccio-a-aws-lambda" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducció a AWS Lambda
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducció a AWS Lambda">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-lambda-i-per-a-que-serveix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Què és Lambda i per a què serveix
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integracions-habituals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integracions habituals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seguretat-rol-dexecucio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Seguretat: rol d’execució
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1127,7 +1211,7 @@
 <h2 id="vpc-i-subxarxes-concepte-i-desplegament-basic">VPC i subxarxes: concepte i desplegament bàsic</h2>
 <div class="admonition tip">
 <p class="admonition-title">Repàs de xarxes</p>
-<p>Aquesta unitat dona per assolits els coneixements respecte a xarxes, subxarxes i direccionament. Pots trobar un repàs  <a href="../../suport/repasXarxes">ací</a>. </p>
+<p>Aquesta unitat dona per assolits els coneixements respecte a xarxes, subxarxes i direccionament. Pots trobar un repàs  <a href="../../suport/repasXarxes/">ací</a>. </p>
 </div>
 <h3 id="que-es-una-vpc-virtual-private-cloud">Què és una VPC (Virtual Private Cloud)</h3>
 <p>En AWS, una <strong>VPC</strong> és una xarxa virtual aïllada dins del núvol on pots definir rangs d’adreces IP, subxarxes, rutes i policies de seguretat. És l’equivalent d’un centre de dades virtual, però amb la flexibilitat d’escala, integració i gestió que ofereix el núvol.</p>
@@ -1301,6 +1385,71 @@ Sense un Internet Gateway, les VPC's no tenen accés a Internet.</p>
 <div class="admonition tip">
 <p class="admonition-title">Entregable</p>
 <p>En aquest punt es recomana realitzar l'exercici 1 de l'entregable d'aquesta unitat disponile a Aules.</p>
+</div>
+<hr />
+<h2 id="introduccio-a-aws-lambda">Introducció a AWS Lambda</h2>
+<p>Lambda és la porta d’entrada al món serverless: en lloc de pensar en servidors que cal encendre, configurar i mantenir, definim funcions petites —trossets de codi— que s’executen en resposta a esdeveniments. Aquest model és molt potent per a tasques curtes i puntuals: processar una imatge quan s’ha pujat a un bucket, respondre una crida HTTP lleugera, o executar treballs programats.</p>
+<p>A diferència d’una màquina virtual (EC2), Lambda s’encarrega automàticament de l’escalat, de la gestió de la infraestructura i del pagament per ús. Això simplifica molt el treball del desenvolupador, però també obliga a pensar de manera diferent: la lògica ha de ser eficient, les funcions són efímeres i hi ha limitacions en temps d’execució i recursos (per això cal dividir problemes en tasques petites i responsabilitats clares).</p>
+<p><img src="../../assets/u3/u3_2.png" alt="u3_2" class="centered-image-50"/></p>
+<h3 id="que-es-lambda-i-per-a-que-serveix">Què és Lambda i per a què serveix</h3>
+<p>Lambda permet executar codi en resposta a events (esdeveniments). Un esdeveniment pot ser, per exemple:</p>
+<ul>
+<li>
+<p>La pujada d’un fitxer a S3</p>
+</li>
+<li>
+<p>La crida d’una API mitjançant API Gateway</p>
+</li>
+<li>
+<p>Un esdeveniment programat (cron) amb EventBridge</p>
+</li>
+<li>
+<p>Una notificació des d’un altre servei.</p>
+</li>
+</ul>
+<p>Els punts forts de Lambda són clars: no cal gestionar servidors, escales de forma automàtica, pagues només pel temps d’execució i integres fàcilment amb molts serveis AWS. Això el fa ideal per a microtasques, processament asincrònic, pipelines de dades lleugeres i lògica de backend puntual.</p>
+<p>També cal conèixer algunes característiques que condicionen el disseny:</p>
+<ul>
+<li>
+<p>Les funcions són estateless (l’estat no es garanteix entre invocacions; si necessites estat, utilitza S3, DynamoDB, RDS, etc.);</p>
+</li>
+<li>
+<p>El temps d’execució és limitat (pensa les funcions com a tasques curtes);</p>
+</li>
+<li>
+<p>Hi ha consideracions de cold start (la primera invocació pot tardar una mica més, especialment amb runtimes grans o si utilitzes arquitectura ARM vs x86).</p>
+</li>
+</ul>
+<h3 id="integracions-habituals">Integracions habituals</h3>
+<p>Lambda s’integra amb molts serveis. Els més rellevants per a nosaltres (visió bàsica):</p>
+<ul>
+<li>
+<p><strong>S3</strong> — Lambda pot ser cridat quan es puja un objecte a un bucket (útil per processar imatges, generar miniatures, indexar fitxers).</p>
+</li>
+<li>
+<p><strong>API Gateway</strong> — Serveix per exposar una funció Lambda com a endpoint HTTP/REST o HTTP API (per crear APIs sense servidor).</p>
+</li>
+<li>
+<p><strong>EventBridg</strong> — Per executar funcions en horaris programats o en reacció a esdeveniments del sistema.</p>
+</li>
+<li>
+<p><strong>CloudWatch</strong> — Guardarà els logs de la funció i pot activar alarmes si cal.</p>
+</li>
+</ul>
+<p>No aprofundirem ara en totes aquestes integracions; l’objectiu és entendre el concepte i veure’n un cas pràctic senzill.</p>
+<h3 id="seguretat-rol-dexecucio">Seguretat: rol d’execució</h3>
+<p>Quan Lambda necessita accedir a altres serveis (per exemple, escriure en CloudWatch Logs, llegir d’un bucket S3, accedir a Secrets Manager), ho fa en nom seu mitjançant un rol d’execució (execution role). Aquest rol és una identitat IAM que atorga permisos perquè la funció puga fer accions concretes.</p>
+<div class="admonition info">
+<p class="admonition-title">Rol laboratori</p>
+<p>Com que AWS Academy no ens permet crear nous rols IAM, gastarem els que du per defecte el laboratori.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Pràctica sugerida</p>
+<p>En aquest punt dels continguts, es recomana fer la <a href="../u3_practiques/">pràctica 4 de la unitat 3</a>.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Curs AWS Academy Cloud Foundations </p>
+<p>Una vegada feta les pràctica 4 s'ha de realitzar la secció 7 i l'activitat que la segueix del mòdul 6 (<em>Informàtica</em>) del curs d' <em>AWS Academy Cloud Foundations</em>.</p>
 </div>
 
 
